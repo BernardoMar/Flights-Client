@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import CreateFlights from './CreateFlights'
-import FlightsForm from './Flights'
+import FlightsForm from './FlightsForm'
 import FlightsTable from './FlightsTable'
 
 class Flights extends Component {
