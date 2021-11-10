@@ -33,6 +33,7 @@ saveSearch(flight_number, origin, destination, date, plane, airplane_id) {
   render() {
     return (
       <div>
+      <h1> Virgin Airlines Flights </h1>
         <SearchForm onSubmit={ this.saveSearch } />
         <SearchResults flights={ this.state.flights } />
       </div>
