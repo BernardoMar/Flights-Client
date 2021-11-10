@@ -16,8 +16,7 @@ class Search extends Component {
 
 searchFlight( origin, destination) {
   axios.get(SERVER_URL_FLIGHTS, { origin: origin, destination: destination }).then((response) => {
-    console.log(origin)
-    console.log(destination)
+
 
     let flights =[]
 
