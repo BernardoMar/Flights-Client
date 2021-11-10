@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
-// import CreateFlights from './CreateFlights'
-// import FlightsForm from './FlightsForm'
-// import FlightsTable from './FlightsTable'
+// import { useParams, Route, Link, useRouteMatch } from 'react-router-dom';
 
 const SERVER_URL_FLIGHTS = 'http://localhost:3000/flights.json';
 
@@ -28,8 +27,6 @@ class Flights extends Component {
     });
   }
 
-
-
   render() {
     return (
       <div>
@@ -43,8 +40,6 @@ class Flights extends Component {
 
 //////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////
-
-
 
 class FlightsForm extends Component {
   constructor() {
@@ -90,21 +85,19 @@ class FlightsForm extends Component {
                     plane: ''})
                   };
 
-
   render() {
     return (
       <form onSubmit={this._handleSubmit}>
-        <textarea type="search"  placeholder="Flight Number" required onChange={this._handleChangeFlight} value={this.state.flight_number}/>
-        <textarea type="search"  placeholder="Date" required onChange={this._handleChangeDate} value={this.state.date}/>
-        <textarea type="search"  placeholder="Origin" required onChange={this._handleChangeOrigin} value={this.state.origin}/>
-        <textarea type="search"  placeholder="Destination" required onChange={this._handleChangeDestination} value={this.state.destination}/>
-        <textarea type="search"  placeholder="Plane Number" required onChange={this._handleChangePlane} value={this.state.plane}/>
+        <input type="search"  placeholder="Flight Number" required onChange={this._handleChangeFlight} value={this.state.flight_number}/>
+        <input type="search"  placeholder="Date" required onChange={this._handleChangeDate} value={this.state.date}/>
+        <input type="search"  placeholder="Origin" required onChange={this._handleChangeOrigin} value={this.state.origin}/>
+        <input type="search"  placeholder="Destination" required onChange={this._handleChangeDestination} value={this.state.destination}/>
+        <input type="search"  placeholder="Plane Number" required onChange={this._handleChangePlane} value={this.state.plane}/>
         <input type="submit"  onChange={this._handleChange} value="Save"/>
       </form>
     );
   }
 }
-
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -114,11 +107,11 @@ const FlightsTable = (props) => {
       <div>
         {props.flights.map((f) =>
           <ul key={f.id}>
-            <li>{f.flight_number}</li>
-            <li>{f.date}</li>
-            <li>{f.origin}</li>
-            <li>{f.destination}</li>
-            <li>{f.plane}</li>
+            <li>Flight Number: <Link to={`/flights/${f.id}`}>{f.flight_number}</Link></li>
+            <li>Date: {f.date}</li>
+            <li>Origin: {f.origin}</li>
+            <li>Destination: {f.destination}</li>
+            <li>Plane Type: {f.plane}</li>
           </ul>
         )};
       </div>

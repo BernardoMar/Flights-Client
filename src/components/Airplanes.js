@@ -87,7 +87,6 @@ class CreateAirlineForm extends Component {
         <input onChange={ this._handleChangeName} type="text" value={ this.state.name } placeholder="name" required/>
         <input onChange={ this._handleChangeRow} type="text" value={ this.state.row } placeholder="rows" required/>
         <input onChange={ this._handleChangeColumn} type="text" value={ this.state.column } placeholder="columns" required/>
-        <input value="Cancel"/>
         <input type="submit" value="Save"/>
       </form>
     );
@@ -95,10 +94,40 @@ class CreateAirlineForm extends Component {
 }
 
 const SeatsDiagram = (props) => {
+  const createdAirplane = props.airplanes.slice(-1)[0];
+  let name;
+  let rows;
+  let columns;
+
+  if (createdAirplane !== undefined){
+    name = createdAirplane.name;
+    rows = createdAirplane.row;
+    columns = createdAirplane.column;
+  }
+
+  let colTable = [];
+  let rowTable = [];
+
+  for (let i = 0; i < rows; i ++){
+    rowTable.push(1);
+  }
+  for (let i = 0; i < columns; i ++){
+    colTable.push(1);
+  }
+
   return (
     <div>
-      { props.airplanes.map(airplane => <p key={ airplane.id }>Name:{ airplane.name } Rows: { airplane.row } Columns: { airplane.column }</p>) }
-
+      Name:{ name }
+      Rows: { rows }
+      Columns: { columns }
+      {
+        rowTable.map((n) =>
+        <table key={Math.random()}>
+          <tr key={Math.random()}>
+            { colTable.map(() => <td style={{background: "red", height: "30px", width: "30px"}}></td>) }
+          </tr>
+        </table>)
+      }
     </div>
   );
 };
