@@ -92,9 +92,9 @@ const SearchResults = (props) => {
     { props.flights.map((flight) =>
 
     <p key={flight.id}>
-
-      Flight Number: { flight.flight_number } Origin: { flight.origin } Destination: {flight.destination } Date: { flight.date } Plane Number: { flight.plane }{ flight.airplane_id }
-
+      <Router>
+      Flight Number: <Link to=`/flights/{flight.id}`>{ flight.flight_number } </Link> Origin: { flight.origin } Destination: {flight.destination } Date: { flight.date } Plane Number: { flight.plane }{ flight.airplane_id }
+      </Router>
     </p>) }
 
     </div>
