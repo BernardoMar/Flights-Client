@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
+
 const SERVER_URL_FLIGHTS = "http://localhost:3000/flights.json";
 
 const Search = (props) => {
