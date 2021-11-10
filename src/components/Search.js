@@ -1,14 +1,7 @@
 import React, {Component} from 'react';
 import { useParams, Route, Link, useRouteMatch } from 'react-router-dom';
 import axios from 'axios';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useRouteMatch,
-  useParams
-} from "react-router-dom";
+
 
 const SERVER_URL_FLIGHTS = "http://localhost:3000/flights.json";
 
@@ -18,7 +11,7 @@ class Search extends Component {
     this.state = {
       flights: []
     };
-    this.saveSearch = this.saveSearch.bind(this);
+    this.searchFlight = this.searchFlight.bind(this);
   }
 
 searchFlight( origin, destination) {
@@ -91,9 +84,9 @@ const SearchResults = (props) => {
     { props.flights.map((flight) =>
 
     <p key={flight.id}>
-      <Router>
-      Flight Number: <Link to=`/flights/{flight.id}`>{ flight.flight_number } </Link> Origin: { flight.origin } Destination: {flight.destination } Date: { flight.date } Plane Number: { flight.plane }{ flight.airplane_id }
-      </Router>
+
+      Flight Number: { flight.flight_number } Origin: { flight.origin } Destination: {flight.destination } Date: { flight.date } Plane Number: { flight.airplane_id }
+
     </p>) }
 
     </div>
