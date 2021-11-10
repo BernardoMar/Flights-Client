@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { useParams, Route, Link, useRouteMatch } from 'react-router-dom';
 import axios from 'axios';
 import {
   BrowserRouter as Router,
@@ -20,28 +21,26 @@ class Search extends Component {
     this.saveSearch = this.saveSearch.bind(this);
   }
 
-componentDidMount() {
-  const fetchFlights = () => {
-    axios (SERVER_URL_FLIGHTS).then((response) => {
-      this.setState({flights: response.data});
-      setTimeout(fetchFlights, 5000);
-    });
-  };
-  fetchFlights();
-};
+searchFlight( origin, destination) {
+  axios.get(SERVER_URL_FLIGHTS, { origin: origin, destination: destination }).then((response) => {
+    let flights =[]
 
+    for (let i = 0; i < response.data.length; i ++){
+      if (response.data[i].origin === origin && response.data[i].destination === destination)
+      {
+        flights.push(response.data[i]);
+      }
+    }
 
-
-saveSearch(flight_number, origin, destination, date, plane, airplane_id) {
-  axios.post(SERVER_URL_FLIGHTS, {flight_number: flight_number, origin: origin, destination: destination, date: date, plane: plane, airplane_id: airplane_id}).then((response) => {
-    this.setState({flights: [...this.state.flights, response.data]});
+    this.setState({flights: flights});
   });
 }
 
   render() {
     return (
       <div>
-        <SearchForm onSubmit={ this.saveSearch } />
+      <h1> Virgin Airlines Flights </h1>
+        <SearchForm onSubmit={ this.searchFlight } />
         <SearchResults flights={ this.state.flights } />
       </div>
     );
