@@ -4,13 +4,12 @@ import {
   Switch,
   Route,
   Link,
-  useRouteMatch,
-  useParams
 } from "react-router-dom";
 
 import Airplanes from './Airplanes';
 import Flights from './Flights';
 import Search from './Search';
+import FlightDetail from "./FlightDetail";
 
 function App() {
   return (
@@ -32,13 +31,15 @@ function App() {
           <Route path="/airplanes">
             <Airplanes />
           </Route>
-          <Route path="/flights">
+          <Route path="/flights" exact>
             <Flights />
           </Route>
           <Route path="/search">
             <Search />
           </Route>
-
+          <Route path="/flights/:flightId">
+            <FlightDetail />
+          </Route>
         </Switch>
       </div>
     </Router>
