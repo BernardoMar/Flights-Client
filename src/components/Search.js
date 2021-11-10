@@ -1,5 +1,13 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useRouteMatch,
+  useParams
+} from "react-router-dom";
 
 const SERVER_URL_FLIGHTS = "http://localhost:3000/flights.json";
 
@@ -34,7 +42,7 @@ saveSearch(flight_number, origin, destination, date, plane, airplane_id) {
     return (
       <div>
         <SearchForm onSubmit={ this.saveSearch } />
-        <SearchResults results={ this.state.flights } />
+        <SearchResults flights={ this.state.flights } />
       </div>
     );
   }
@@ -43,17 +51,54 @@ saveSearch(flight_number, origin, destination, date, plane, airplane_id) {
 class SearchForm extends Component {
   constructor() {
     super();
-    this.state = { flight_number: '', origin: '', destination:'', date:'', plane:'', airplane_id:''};
-    this._handleChange = this._handleChange.bind(this);
+    this.state = { origin: '', destination:''};
+    this._handleChangeOrigin = this._handleChangeOrigin.bind(this);
+    this._handleChangeDestination = this._handleChangeDestination.bind(this);
     this._handleSubmit = this._handleSubmit.bind(this);
   }
 
-_handleChange(event) {
-  this.preventDefault
+
+_handleChangeOrigin(event) {
+  this.setState({origin: event.target.value});
 }
 
+_handleChangeDestination(event) {
+  this.setState({destination: event.target.value});
 }
 
+_handleSubmit(event) {
+  event.preventDefault();
+  this.props.onSubmit(this.state.content);
+  this.setState({ origin: '', destination:''});
+}
 
+render() {
+  return (
+    <form onSubmit={ this._handleSubmit }>
+
+
+        <input onChange={ this._handleChangeOrigin} type="text" value={ this.state.origin } placeholder="Origin" required/>
+        <input onChange={ this._handleChangeDestination} type="text" value={ this.state.destination } placeholder="Destination" required/>
+
+        <input type="Submit" value="Flights" />
+      </form>
+  );
+ }
+}
+
+const SearchResults = (props) => {
+  return (
+    <div>
+    { props.flights.map((flight) =>
+
+    <p key={flight.id}>
+
+      Flight Number: { flight.flight_number } Origin: { flight.origin } Destination: {flight.destination } Date: { flight.date } Plane Number: { flight.plane }{ flight.airplane_id }
+
+    </p>) }
+
+    </div>
+  )
+}
 
 export default Search;

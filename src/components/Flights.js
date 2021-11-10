@@ -94,11 +94,11 @@ class FlightsForm extends Component {
   render() {
     return (
       <form onSubmit={this._handleSubmit}>
-        <textarea type="search"  placeholder="Flight Number" required onChange={this._handleChangeFlight} value={this.state.flight_number}/>
-        <textarea type="search"  placeholder="Date" required onChange={this._handleChangeDate} value={this.state.date}/>
-        <textarea type="search"  placeholder="Origin" required onChange={this._handleChangeOrigin} value={this.state.origin}/>
-        <textarea type="search"  placeholder="Destination" required onChange={this._handleChangeDestination} value={this.state.destination}/>
-        <textarea type="search"  placeholder="Plane Number" required onChange={this._handleChangePlane} value={this.state.plane}/>
+        <input type="text"  placeholder="Flight Number" required onChange={this._handleChangeFlight} value={this.state.flight_number}/>
+        <input type="date"  placeholder="Date" required onChange={this._handleChangeDate} value={this.state.date}/>
+        <input type="text"  placeholder="Origin" required onChange={this._handleChangeOrigin} value={this.state.origin}/>
+        <input type="text"  placeholder="Destination" required onChange={this._handleChangeDestination} value={this.state.destination}/>
+        <input type="text"  placeholder="Plane Number" required onChange={this._handleChangePlane} value={this.state.plane}/>
         <input type="submit"  onChange={this._handleChange} value="Save"/>
       </form>
     );
