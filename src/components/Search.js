@@ -10,11 +10,15 @@ class Search extends Component {
     this.state = {
       flights: []
     };
-    this.saveSearch = this.saveSearch.bind(this);
+    this.searchFlight = this.searchFlight.bind(this);
+
   }
 
 searchFlight( origin, destination) {
   axios.get(SERVER_URL_FLIGHTS, { origin: origin, destination: destination }).then((response) => {
+    console.log(origin)
+    console.log(destination)
+
     let flights =[]
 
     for (let i = 0; i < response.data.length; i ++){
@@ -23,7 +27,8 @@ searchFlight( origin, destination) {
         flights.push(response.data[i]);
       }
     }
-
+console.log('flights from axios')
+console.log(flights)
     this.setState({flights: flights});
   });
 }
@@ -59,7 +64,7 @@ _handleChangeDestination(event) {
 
 _handleSubmit(event) {
   event.preventDefault();
-  this.props.onSubmit(this.state.content);
+  this.props.onSubmit(this.state.origin, this.state.destination);
   this.setState({ origin: '', destination:''});
 }
 
