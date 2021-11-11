@@ -10,6 +10,7 @@ import Airplanes from './Airplanes';
 import Flights from './Flights';
 import Search from './Search';
 import FlightDetail from "./FlightDetail";
+import Users from './Users'
 
 function App() {
   return (
@@ -25,6 +26,9 @@ function App() {
           <li>
             <Link to="/search">Search</Link>
           </li>
+          <li>
+            <Link to="/users">Users</Link>
+          </li>
         </ul>
 
         <Switch>
@@ -37,12 +41,16 @@ function App() {
           <Route path="/search">
             <Search />
           </Route>
+          <Route path="/users">
+            <Users />
+          </Route>
           <Route path="/flights/:flightId">
             <FlightDetail />
           </Route>
         </Switch>
       </div>
     </Router>
+
 
   );
 }
