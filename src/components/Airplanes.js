@@ -34,7 +34,7 @@ class Airplanes extends Component {
 
   render(){
     return (
-      <div>
+      <div style={{border: "1px solid black", paddingBottom: "40px", paddingTop: "15px", borderRadius: "20px", background: "#f0f0f0", }}>
         <h1>Virgin Airlines</h1>
         <CreateAirlineForm onSubmit={ this.saveAirline} />
         <SeatsDiagram airplanes={ this.state.airplanes }/>

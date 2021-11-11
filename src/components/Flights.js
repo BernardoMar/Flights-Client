@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+
 // import { useParams, Route, Link, useRouteMatch } from 'react-router-dom';
 
 const SERVER_URL_FLIGHTS = 'http://localhost:3000/flights.json';
@@ -29,7 +30,7 @@ class Flights extends Component {
 
   render() {
     return (
-      <div>
+      <div style={{border: "1px solid black", paddingBottom: "40px", paddingTop: "15px", borderRadius: "20px", background: "#f0f0f0", }}>
         <h1>Virgin Airlines - Create Flights</h1>
         <FlightsForm onSubmit={this.saveFlight}/>
         <FlightsTable flights={this.state.flights}/>

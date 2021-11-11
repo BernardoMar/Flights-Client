@@ -22,10 +22,13 @@ const Search = (props) => {
   };
 
     return (
-      <div>
-        <SearchForm onSubmit={ searchFlight } />
+
+      <div style={{border: "1px solid black", paddingBottom: "40px", paddingTop: "15px", borderRadius: "20px", background: "#f0f0f0", }}>
+       <h1 style={{textAlign: "centre"}}> Search For Available Flights: </h1>
+        <SearchForm onSubmit={ searchFlight }/>
         <SearchResults flights={ flights } />
       </div>
+
     );
 };
 
@@ -53,7 +56,10 @@ const SearchForm = (props) => {
       <input onChange={ _handleChangeOrigin } type="text" value={ origin } placeholder="Origin" required/>
       <input onChange={ _handleChangeDestination } type="text" value={ destination } placeholder="Destination" required/>
 
-      <input type="Submit" value="Search" />
+      <input type="Submit" value="Search" style={{
+      color: "white",
+      border: "gray",
+      background: "#373333"}}/>
     </form>
   );
 };
@@ -61,7 +67,16 @@ const SearchForm = (props) => {
 const SearchResults = (props) => {
   return (
     <div>
-      { props.flights.map((flight) => <p key={flight.id}>Flight Number: <Link to={`/flights/${flight.id}`}>{ flight.flight_number }</Link> Origin: { flight.origin } Destination: {flight.destination } Date: { flight.date } Plane Number: { flight.plane }</p>) }
+      { props.flights.map((flight) => <ul key={flight.id}>
+         <li>Flight Number: <Link to={`/flights/${flight.id}`}>
+      { flight.flight_number }</Link></li>
+         <li>Origin: { flight.origin }</li>
+         <li>Destination: {flight.destination } </li>
+         <li>Date: { flight.date }
+         <li>Plane Number: { flight.plane }</li>
+         </li>
+         </ul>
+       )};
     </div>
   );
 };
