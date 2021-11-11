@@ -121,7 +121,7 @@ const SeatsDiagram = (props) => {
       Rows: { rows }
       Columns: { columns }
       {
-        rowTable.map((n) =>
+        rowTable.map(() =>
         <table key={Math.random()}>
           <tr key={Math.random()}>
             { colTable.map(() => <td style={{background: "red", height: "30px", width: "30px"}}></td>) }
