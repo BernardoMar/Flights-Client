@@ -34,8 +34,8 @@ class Airplanes extends Component {
 
   render(){
     return (
-      <div style={{border: "1px solid black", paddingBottom: "40px", paddingTop: "15px", borderRadius: "20px", background: "#f0f0f0", }}>
-        <h1>Virgin Airlines</h1>
+      <div style={{border: "1px solid black", paddingBottom: "40px", paddingTop: "15px", borderRadius: "20px", background: "white", }}>
+        <h1 style={{color: "red"}}>Virgin Airlines</h1>
         <CreateAirlineForm onSubmit={ this.saveAirline} />
         <SeatsDiagram airplanes={ this.state.airplanes }/>
       </div>
@@ -121,7 +121,7 @@ const SeatsDiagram = (props) => {
       Rows: { rows }
       Columns: { columns }
       {
-        rowTable.map((n) =>
+        rowTable.map(() =>
         <table key={Math.random()}>
           <tr key={Math.random()}>
             { colTable.map(() => <td style={{background: "red", height: "30px", width: "30px"}}></td>) }

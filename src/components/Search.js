@@ -23,8 +23,8 @@ const Search = (props) => {
 
     return (
 
-      <div style={{border: "1px solid black", paddingBottom: "40px", paddingTop: "15px", borderRadius: "20px", background: "#f0f0f0", }}>
-       <h1 style={{textAlign: "centre"}}> Search For Available Flights: </h1>
+      <div style={{border: "1px solid black", paddingBottom: "40px", paddingTop: "15px", borderRadius: "20px", background: "white", }}>
+       <h1 style={{color: "red"}}> Search For Available Flights: </h1>
         <SearchForm onSubmit={ searchFlight }/>
         <SearchResults flights={ flights } />
       </div>

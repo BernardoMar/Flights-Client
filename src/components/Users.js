@@ -29,7 +29,7 @@ class Users extends Component{
 
   render() {
     return(
-      <div>
+      <div style={{border: "1px solid black", paddingBottom: "40px", paddingTop: "15px", borderRadius: "20px", background: "white", }}>
           <SignUp onSubmit={this.saveUser} />
           <Login />
           <LogOut />
@@ -82,8 +82,8 @@ _handleSubmit(event) {
 
   render() {
     return(
-      <div>
-        <h2>Creat Accout to Search and Book Flights</h2>
+      <div >
+        <h2 style={{color: "red"}}>Creat Accout to Search and Book Flights</h2>
         <form onSubmit={this._handleSubmit}>
           <input type="text" placeholder="Name" onChange={this._handleChangeName} required/>
           <input type="text" placeholder="User Name" onChange={this._handleChangeUserName} required/>
@@ -103,7 +103,7 @@ class Login extends Component {
     return(
 
       <div>
-        <h2>LogIn to Search and Book Flights</h2>
+        <h2 style={{color: "red"}}>LogIn to Search and Book Flights</h2>
         <input type="text" placeholder="username@gmail.com"/>
         <input type="password" placeholder="password"/>
         <input type="submit"/>
@@ -118,7 +118,7 @@ class Login extends Component {
 class LogOut extends Component {
   render() {
     return(
-      <div>
+      <div style={{color: "red"}}>
         LogOut Form Coming Soon
       </div>
     );
