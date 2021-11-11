@@ -77,14 +77,14 @@ const FlightDetail = (props) => {
 
   return (
 
-    <div>
+    <div style={{border: "1px solid black", paddingBottom: "40px", paddingTop: "15px", borderRadius: "20px", background: "white", }}>
       <button onClick={searchFlight}>Show Flight Details</button>
       <button onClick={searchPlane}>Show Airplane</button>
-      <p>Flight Number: {flightNumber}</p>
-      <p>Origin: {origin}</p>
-      <p>Destination: {destination}</p>
-      <p>Date: {date}</p>
-      <p>Plane Type: {planeType}</p>
+      <p style={{color: "red"}}>Flight Number: {flightNumber}</p>
+      <p style={{color: "red"}}>Origin: {origin}</p>
+      <p style={{color: "red"}}>Destination: {destination}</p>
+      <p style={{color: "red"}}> Date: {date}</p>
+      <p style={{color: "red"}}>Plane Type: {planeType}</p>
 
       {
         rowTable.map((i) =>
